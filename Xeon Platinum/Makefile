@@ -52,6 +52,8 @@ OPT6_CFLAGS = $(OPT5_CFLAGS)
 OPT7_8_CFLAGS = $(OPT6_CFLAGS)
 EXT_EXP_CFLAGS = $(OPT7_8_CFLAGS)
 
+OPT9_CFLAGS = $(OPT7_8_CFLAGS)
+
 # Nombres de programa
 
 V_NAIVE_SEC = naive_sec
@@ -66,7 +68,10 @@ V_OPT_6 = opt_6
 V_OPT_7_8 = opt_7_8
 V_EXT_EXP = extra_exp
 
-VERS = $(V_NAIVE_SEC) $(V_NAIVE_PAR) $(V_BLOCK_SEC) $(V_OPT_0_1) $(V_OPT_2) $(V_OPT_3) $(V_OPT_4) $(V_OPT_5) $(V_OPT_6) $(V_OPT_7_8)
+V_OPT_9_SEM = opt_9-sem
+V_OPT_9_COND = opt_9-cond
+
+VERS = $(V_NAIVE_SEC) $(V_NAIVE_PAR) $(V_BLOCK_SEC) $(V_OPT_0_1) $(V_OPT_2) $(V_OPT_3) $(V_OPT_4) $(V_OPT_5) $(V_OPT_6) $(V_OPT_7_8) $(V_OPT_9_SEM) $(V_OPT_9_COND)
 
 EXE = $(VERS:%=$(EXE_DIR)/%)
 SRC = $(wildcard $(SRC_DIR)/*.c)
@@ -140,6 +145,14 @@ $(FLOYD_OBJ_DIR)/$(V_OPT_6).o: $(FLOYD_SRC_DIR)/$(V_OPT_6).c
 
 $(FLOYD_OBJ_DIR)/$(V_OPT_7_8).o: $(FLOYD_SRC_DIR)/$(V_OPT_7_8).c
 	$(CC) $(CFLAGS) $(OPT7_8_CFLAGS) -c $< -o $@
+
+# Nuevas versiones implementadas
+$(FLOYD_OBJ_DIR)/$(V_OPT_9_SEM).o: $(FLOYD_SRC_DIR)/$(V_OPT_9_SEM).c
+	$(CC) $(CFLAGS) $(OPT9_CFLAGS) -c $< -o $@
+
+$(FLOYD_OBJ_DIR)/$(V_OPT_9_COND_1).o: $(FLOYD_SRC_DIR)/$(V_OPT_9_COND).c
+	$(CC) $(CFLAGS) $(OPT9_CFLAGS) -c $< -o $@
+
 
 clean:
 	$(RM) $(OBJ) $(FLOYD_OBJ) $(INPUT_FILES_GEN).o

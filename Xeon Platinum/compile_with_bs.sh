@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bs_array=(32 64 128)
+bs_array=(32 64 128 256)
 
 for bs in ${bs_array[@]}
 do
